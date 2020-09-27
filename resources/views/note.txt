@@ -1,0 +1,48 @@
+// Main Functions 
+- Item Management
+	- Brand / category / Subcategory 
+
+- Sell/ Shopping
+
+- Order Management
+	- items / customer
+	- order/ order_detail
+
+- Customer Manage
+	-report
+-orders
+	-voucherid,user_id,orderdate,status
+
+-order_detail
+	-voucherid,product_id,quantity
+
+- brands
+=> 1|b1|photo
+=> 2|b2|photo
+
+- categories
+=> 1|fashion |photo
+=> 2|electronic |photo
+
+-Subvategories
+=> 1|baby wear |1
+
+- os_laravel (database) 
+
+Relationship Model
+----------------------
+
+- One to One
+	-hasOne (p)
+	-belongsTo(c)
+
+-One to Many
+	-hasMany(p)
+	-belongsTo(c)
+
+-Many to Many
+	-belongsToMany
+	-pivot table(get both id)
+
+
+	
