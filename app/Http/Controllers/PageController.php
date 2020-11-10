@@ -8,23 +8,25 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Brand;
 use App\Category;
-
+use App\Subcategory;
 class PageController extends Controller
 {
-    function mainfun($value='')
+    public function mainfun($value='')
     {
         $categories = Category::all();
         $items = Item::all()->take(6);
         $brands = Brand::all();
-     // dd($items);
+   
     	return view('main',compact('items','brands','categories'));
     }
-    function itemBybrand($id)
+
+    public function itemBybrand($id)
     {
         $brand = Brand::find($id);
     	return view('brand',compact('brand'));
     }
-    function itemdetailfun($id)
+
+    public function itemdetailfun($id)
     {
         $item = Item::find($id);
         $brand_id = $item->brand_id;
@@ -32,30 +34,36 @@ class PageController extends Controller
 
     	return view('itemdetail',compact('item','brands'));
     }
-    function lgoinfun($value='')
+
+    public function lgoinfun($value='')
     {
-    	return view('login');//('foldername.filename')
+    	return view('login');
     }
-    function promotion($value='')
+    public function promotion($value='')
     {
         $items = Item::where('discount','>',0)->get();
 
     	return view('promotion',compact('items'));
     }
-    function registerfun($value='')
+
+    public function registerfun($value='')
     {
-    	return view('register');
+    	return view('registerform');
     }
-    function shoppingcartfun($value='')
+
+    public function shoppingcartfun($value='')
     {
     	return view('shoppingcart');
     }
-     function subcategoryfun($id)
+
+    public function subcategoryfun($id)
     {
         // dd($id);
-        $subcategories = Item::where('subcategory_id',$id)->get();;
+        $subcategory_items= Item::where('subcategory_id',$id)->get();
+        $subcategories = Subcategory::all();
+        $subcategory=Subcategory::find($id);
 
-    	return view('subcategory',compact('subcategories'));
+    	return view('subcategory',compact('subcategory_items','subcategories','subcategory'));
     }
 
 

@@ -21,6 +21,8 @@ class CreateOrdersTable extends Migration
             $table->text('note');
             $table->integer('total');
             $table->unsignedBigInteger('user_id');
+            $table->text('phone');
+            $table->text('address');
             $table->timestamps();
 
             $table->foreign('user_id')

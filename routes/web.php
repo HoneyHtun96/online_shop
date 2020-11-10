@@ -25,7 +25,7 @@ Route::get('shoppingcart','PageController@shoppingcartfun')->name('shoppingcartp
 Route::get('subcategory/{id}','PageController@subcategoryfun')->name('subcategorypage');
 Route::get('backendroute','BackendController@backendfun')->name('backendpage');
 
-//php artisan make:controller ItemController -r resource  7ခုရလိမ့်မယ်
+
 Route::middleware('role:Admin')->group(function(){
 	Route::resource('brands','BrandController');
 	Route::resource('categories','CategoryController');
@@ -36,10 +36,17 @@ Route::middleware('role:Admin')->group(function(){
 
 
 Route::resource('orders','OrderController');
+Route::post('order_confirm','OrderController@order_confirm')->name('order_confirm');
+Route::get('report_list',function(){
+	return view('Backend.report_list');
+})->name('report_list');
+Route::post('report','OrderController@report')->name('report');
+
+Route::get('dashboard','OrderController@dashboard')->name('dashboard');
 
 Auth::routes();
 Route::get('loginform','PageController@lgoinfun')->name('loginpage');
-Route::get('register','PageController@registerfun')->name('registerpage');
+Route::get('registerform','PageController@registerfun')->name('registerpage');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

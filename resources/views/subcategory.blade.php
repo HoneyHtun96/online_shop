@@ -3,7 +3,7 @@
 
 <div class="jumbotron jumbotron-fluid subtitle">
   		<div class="container">
-    		<h1 class="text-center text-white"> Subcategory name </h1>
+    		<h1 class="text-center text-white"> {{ $subcategory->name}} </h1>
   		</div>
 	</div>
 	
@@ -16,14 +16,12 @@
 		    	<li class="breadcrumb-item">
 		    		<a href="{{route('mainpage')}}" class="text-decoration-none secondarycolor"> Home </a>
 		    	</li>
+		    	
 		    	<li class="breadcrumb-item">
-		    		<a href="#" class="text-decoration-none secondarycolor"> Category </a>
-		    	</li>
-		    	<li class="breadcrumb-item">
-		    		<a href="#" class="text-decoration-none secondarycolor"> Category Name </a>
+		    		<a href="#" class="text-decoration-none secondarycolor">{{ $subcategory->category->name}}</a>
 		    	</li>
 		    	<li class="breadcrumb-item active" aria-current="page">
-					Subcategory Name
+					{{ $subcategory->name}}
 		    	</li>
 		  	</ol>
 		</nav>
@@ -31,21 +29,11 @@
 		<div class="row mt-5">
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 				<ul class="list-group">
+					@foreach($subcategories as $subcategory)
 				  	<li class="list-group-item">
-				  		<a href="" class="text-decoration-none secondarycolor"> Category One </a>
+				  		<a href="{{route('subcategorypage',$subcategory->id)}}" class="text-decoration-none secondarycolor"> {{$subcategory->name}}</a>
 				  	</li>
-				  	<li class="list-group-item active">
-				  		<a href="" class="text-decoration-none secondarycolor"> Category Two </a>
-				  	</li>
-				  	<li class="list-group-item">
-				  		<a href="" class="text-decoration-none secondarycolor"> Category Three </a>
-				  	</li>
-				  	<li class="list-group-item">
-				  		<a href="" class="text-decoration-none secondarycolor"> Category Four </a>
-				  	</li>
-				  	<li class="list-group-item">
-				  		<a href="" class="text-decoration-none secondarycolor"> Category Five</a>
-				  	</li>
+				  	@endforeach
 				</ul>
 			</div>	
 
@@ -53,17 +41,17 @@
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
 
 				<div class="row">
-					@foreach($subcategories as $subcategory)
+					@foreach($subcategory_items as $subcategory_item)
 					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
 						<div class="card pad15 mb-3">
-						  	<img src="{{asset($subcategory->photo)}}" class="card-img-top" alt="...">
+						  	<img src="{{asset($subcategory_item->photo)}}" class="card-img-top" alt="...">
 						  	
 						  	<div class="card-body text-center">
-						    	<h5 class="card-title text-truncate">{{$subcategory->name}}</h5>
+						    	<h5 class="card-title text-truncate">{{$subcategory_item->name}}</h5>
 						    	
 						    	<p class="item-price">
 		                        	<strike>250,000 Ks </strike> 
-		                        	<span class="d-block">{{$subcategory->price}}Ks</span>
+		                        	<span class="d-block">{{$subcategory_item->price}}Ks</span>
 		                        </p>
 
 		                        <div class="star-rating">
@@ -76,7 +64,9 @@
 									</ul>
 								</div>
 
-								<a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
+								<a href="#" class="addtocartBtn text-decoration-none" data-id="{{$subcategory_item->id}}" data-name="{{$subcategory_item->name}}" data-price="{{$subcategory_item->price}}" data-photo="{{$subcategory_item->photo}}">
+									<i class="icofont-shopping-cart mr-2"></i> Add to Cart
+								</a>
 						  	</div>
 						</div>
 					</div>

@@ -34,10 +34,11 @@
          						<td>{{$order->voucherno}}</td>
          						<td>{{$order->orderdate}}</td>
          						<td>{{$order->total}}</td>
-                                <td>{{$order->user_id}}</td>
+                                <td>{{$order->user->name}}</td>
          					
          						<td>
-         							<a href="{{route('orders.show',$order->id)}}" class="btn btn-primary">Detail</a>
+         							<a href="{{route('orders.show',$order->id)}}" class=""><i class="fas fa-info-circle fa-2x"></i></a>
+                                    <a href="#" class="text-success order_confirm" data-id="{{$order->id}}"><i class="fas fa-check-circle fa-2x"></i></a>
          							
          						</td>
          					</tr>
@@ -51,4 +52,23 @@
         </div>
         <!-- /.container-fluid -->
 	</div>
+@endsection
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.order_confirm').click(function(){
+            var id = $(this).data('id');
+            $.post("{{route('order_confirm')}}",{id:id},function(res){
+                alert(res.msg);
+                location.reload();
+
+            })
+        })
+    })
+</script>
 @endsection

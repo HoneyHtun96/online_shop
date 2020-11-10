@@ -6,17 +6,17 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Categories Create Form</h1>
+            <h1 class="h3 mb-0 text-gray-800">Add new Categories</h1>
           </div>
 
           <!-- Content Row -->
          <div class="container">
          	<div class="row">      		
-         		<main role="main" class="col-md-6  col-lg-10 ">
+         		<main role="main" class="col-md-6  col-lg-10 shadow">
          			<form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
-         				@csrf {{-- inpute type hidden torgen ပါကိုပါရမယ် မရပါရင် data မယူသွား--}}
+         				@csrf 
          				
-         				<div class="row">
+         				<div class="row form-group my-3">
          					<div class="col-md-12">
          						<label>Name</label>
          						<input type="text" class="form-control" name="name">
@@ -25,7 +25,7 @@
                            @enderror
          					</div>
          				</div>
-         				<div class="row">
+         				<div class="row form-group my-3">
          					<div class="col-md-12">
          						<label>Photo </label>
          						<input type="file" class="form-control-file" name="photo">
@@ -33,7 +33,7 @@
          				</div>
          				<div class="row my-3">
          					<div class="col-md-12"> 
-         						<input type="submit" value="Create" class="btn btn-success" name="btnsubmit">
+         						<input type="submit" value="Create" class="btn btn-primary" name="btnsubmit">
          					</div>
          				</div>
          			</form>

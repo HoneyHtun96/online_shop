@@ -6,16 +6,16 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Item Create Form</h1>
+            <h1 class="h3 mb-0 text-gray-800">Add new Item</h1>
           </div>
 
           <!-- Content Row -->
          <div class="container">
          	<div class="row">      		
-         		<main role="main" class="col-md-6  col-lg-10 ">
+         		<main role="main" class="col-md-6  col-lg-10 shadow">
          			<form action="{{route('items.store')}}" method="post" enctype="multipart/form-data">
-         				@csrf {{-- inpute type hidden torgen ပါကိုပါရမယ် မရပါရင် data မယူသွား--}}
-         				<div class="row my-3">
+         				@csrf 
+         				<div class="row my-3 form-group">
          					<div class="col-md-12">
          						<label>Code No</label>
          						<input class="form-control" type="text" name="codeno">
@@ -25,7 +25,7 @@
 
          					</div>
          				</div>
-         				<div class="row my-3">
+         				<div class="row my-3 form-group">
          					<div class="col-md-12">
          						<label>Name</label>
          						<input type="text" class="form-control" name="name">
@@ -34,7 +34,7 @@
                            @enderror
          					</div>
          				</div>
-         				<div class="row my-3">
+         				<div class="row my-3 form-group">
          					<div class="col-md-12">
          						<label>Photo </label>
 
@@ -47,7 +47,7 @@
          					
          				</div>
 
-         				<div class="row my-3">
+         				<div class="row my-3 form-group">
          					<div class="col-md-12">
          						<label>Price </label>
          						<input type="number" name="price" class="form-control price">
@@ -56,7 +56,7 @@
                            @enderror
          					</div>
          				</div>
-         				<div class="row my-3">
+         				<div class="row my-3 form-group">
          					<div class="col-md-12">
                            <label>Brands</label>
                            <select class="form-control form-control-md" id="inputBrand" name="brand">
@@ -70,7 +70,7 @@
          					
          				</div>
          				
-         				<div class="row my-3">
+         				<div class="row my-3 form-group">
                         <div class="col-md-12">
                            <label>SubCategories</label>
                            <select class="form-control form-control-md" id="inputSubcategory" name="subcategory">
@@ -84,7 +84,7 @@
                      </div>        				
 
 
-         				<div class="row my-3">
+         				<div class="row my-3 form-group">
          					<div class="col-md-12 ">
          						<label>Discount</label>
          						<input type="text" class="form-control" name="discount" value="0">
@@ -93,7 +93,7 @@
                            @enderror
          					</div>
          				</div>
-         				<div class="row my-3">
+         				<div class="row my-3 form-group">
 
          					<div class="col-md-12 ">
          						<label>Description</label>
@@ -105,7 +105,7 @@
          				</div>
          				<div class="row my-3">
          					<div class="col-md-12"> 
-         						<input type="submit" value="Create" class="btn btn-success" name="btnsubmit">
+         						<input type="submit" value="Create" class="btn btn-primary" name="btnsubmit">
          					</div>
          				</div>
          			</form>

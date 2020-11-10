@@ -13,16 +13,14 @@
 		<nav aria-label="breadcrumb ">
 		  	<ol class="breadcrumb bg-transparent">
 		    	<li class="breadcrumb-item">
-		    		<a href="#" class="text-decoration-none secondarycolor"> Home </a>
+		    		<a href="{{route('mainpage')}}" class="text-decoration-none secondarycolor"> Home </a>
 		    	</li>
+		    	
 		    	<li class="breadcrumb-item">
-		    		<a href="#" class="text-decoration-none secondarycolor"> Category </a>
-		    	</li>
-		    	<li class="breadcrumb-item">
-		    		<a href="#" class="text-decoration-none secondarycolor"> Category Name </a>
+		    		<a href="#" class="text-decoration-none secondarycolor"> {{$item->subcategory->category->name}}</a>
 		    	</li>
 		    	<li class="breadcrumb-item active" aria-current="page">
-					Subcategory Name
+					{{$item->subcategory->name}}
 		    	</li>
 		  	</ol>
 		</nav>
@@ -76,7 +74,7 @@
 			
 			@foreach($brands as $brand_item)
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-				<a href="">
+				<a href="{{route('itemdetailpage',$brand_item->id)}}">
 					<img src="{{asset($brand_item->photo)}}" class="img-fluid">
 				</a>
 			</div>
@@ -88,7 +86,4 @@
 		
 	</div>
 
-@endsection
-@section('script')
-<script type="text/javascript" src="{{asset('front/js/main.js')}}"></script>
 @endsection

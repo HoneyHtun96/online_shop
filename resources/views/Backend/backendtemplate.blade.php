@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>SB Admin 2 - Dashboard</title>
 
@@ -17,6 +18,9 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{asset('backend/vendor/datatables/dataTables.bootstrap4.css')}}"></script>
+
 
 </head>
 
@@ -41,7 +45,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('dashboard')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -54,39 +58,32 @@
         Interface
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="{{route('brands.index')}}">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="{{route('brands.index')}}">Brands</a>
-
-            <a class="collapse-item" href="{{route('categories.index')}}">Category</a>
-
-            <a class="collapse-item" href="{{route('subcategories.index')}}">Subcategory</a>
-          </div>
-        </div>
+          <span>Brands</span></a>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
+       <li class="nav-item">
+        <a class="nav-link" href="{{route('categories.index')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Categories</span></a>
+      </li>
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="{{route('items.index')}}">Items</a>
-           
-          </div>
-        </div>
+        <a class="nav-link" href="{{route('subcategories.index')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Subcategories</span></a>
       </li>
 
+      <hr class="sidebar-divider">
+     
+     <li class="nav-item">
+        <a class="nav-link" href="{{route('items.index')}}">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Items</span></a>
+      </li>
+     
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -95,6 +92,17 @@
         Addons
       </div>
 
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('orders.index')}}">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Order List</span></a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="{{route('report_list')}}">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Report</span></a>
+      </li>
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -115,20 +123,9 @@
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
+     
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
-
+      
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -389,6 +386,15 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>
   <script src="{{asset('backend/js/demo/chart-pie-demo.js')}}"></script>
+  <!-- datatable -->
+  <script type="text/javascript" src="{{asset('backend/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+
+  <script type="text/javascript" src="{{asset('backend/vendor/datatables/dataTables.bootstrap4.js')}}"></script>
+
+  <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
+
+
+  @yield('script')
 
 </body>
 

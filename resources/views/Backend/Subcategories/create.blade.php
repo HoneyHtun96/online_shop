@@ -6,7 +6,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Subcategories Create Form</h1>
+            <h1 class="h3 mb-0 text-gray-800">Add new Subcategories</h1>
           </div>
 
           <!-- Content Row -->
@@ -14,7 +14,7 @@
          	<div class="row">      		
          		<main role="main" class="col-md-6  col-lg-10 ">
          			<form action="{{route('subcategories.store')}}" method="post" enctype="multipart/form-data">
-         				@csrf {{-- inpute type hidden torgen ပါကိုပါရမယ် မရပါရင် data မယူသွား--}}
+         				@csrf 
          				
          				<div class="row">
          					<div class="col-md-12">
@@ -35,7 +35,7 @@
                      </div>
                      <div class="row my-3">
                         <div class="col-md-12"> 
-                           <input type="submit" value="Create" class="btn btn-success" name="btnsubmit">
+                           <input type="submit" value="Create" class="btn btn-primary" name="btnsubmit">
                         </div>
                      </div>
          			</form>

@@ -88,7 +88,7 @@ class BrandController extends Controller
     public function edit(Brand $brand)
     {
          //$brands=Brand::all();
-         return view('Backend.brands.edit',compact('brand'))  ;
+         return view('Backend.Brands.edit',compact('brand'))  ;
     }
 
     /**

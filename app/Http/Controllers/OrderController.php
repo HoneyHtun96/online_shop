@@ -19,7 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::where('status',0)->get();
         return view('Backend.order_list',compact('orders'));
     }
 
@@ -41,6 +41,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data_array = json_decode($request->data_string);
         $total = 0;
 
@@ -53,6 +54,8 @@ class OrderController extends Controller
         $order->orderdate = date('Y-m-d');
         $order->note = $request->note;
         $order->total = $total;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
         $order->user_id = Auth::id();
         $order->save();
 
@@ -107,5 +110,31 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function dashboard(){
+        $order_confirms = Order::where('status',1)->get();
+        $order_pendings = Order::where('status',0)->get();
+
+        return view('Backend.dashboard',compact('order_confirms','order_pendings'));
+
+    }
+
+    public function order_confirm(Request $request)
+    {
+        $id = request('id');
+        $order = Order::find($id);
+        $order->status =1;
+        $order->save();
+        return response()->json(['msg'=>'Order Confirmed Successfully!']);
+    }
+
+    public function report(Request $request)
+    {
+        $start_date = request('start_date');
+        $end_date = request('end_date');
+        $orders = Order::whereBetween('orderdate',[$start_date,$end_date])->with('user')->orderBy('created_at','desc')->get();
+     
+        return response()->json(['orders' => $orders]);
     }
 }

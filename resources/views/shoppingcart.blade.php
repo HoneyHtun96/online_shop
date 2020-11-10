@@ -38,9 +38,19 @@
 					</tbody>
 					<tfoot id="shoppingcart_tfoot">
 						<tr> 
-							<td colspan="5"> 
-								<textarea class="form-control" id="notes" placeholder="Any Request..."></textarea>
+							<td colspan="2"> 
+								<textarea class="form-control" id="notes" placeholder="Any Request..." required="required"></textarea>
 							</td>
+							<td colspan="3">
+								<input type="number" name="phone" id="phone" placeholder="Enter phone number" class="form-control" required="required">
+							</td>
+							<td colspan="3">
+								<input type="text" name="address" id="address" placeholder="Enter Address" class="form-control" required="required">
+							</td>
+							
+						</tr>
+						<tr>
+							<td colspan="5"></td>
 							<td colspan="3">
 								@role('Customer')
 								<button class="btn btn-secondary btn-block mainfullbtncolor checkout_btn"> 
@@ -58,7 +68,7 @@
 		</div>
 
 		<!-- No Shopping Cart Div -->
-		<div class="row mt-5 noneshoppingcart_div text-center">
+		<!-- <div class="row mt-5 noneshoppingcart_div text-center">
 			
 			<div class="col-12" id="data_empty">
 			</div>
@@ -71,13 +81,10 @@
 			</div>
 
 		</div>
-		
+		 -->
 
 	</div>
 	
 
 @endsection
 
-@section('script')
-<script type="text/javascript" src="{{asset('front/js/main.js')}}"></script>
-@endsection
